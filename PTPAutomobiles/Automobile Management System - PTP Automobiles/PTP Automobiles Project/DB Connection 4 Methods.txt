@@ -1,0 +1,58 @@
+Option Explicit
+Public dbconn As New ADODB.Connection
+Public recset As New ADODB.Recordset
+
+Public Sub dbconnection()
+dbconn.Open "provider=microsoft.jet.oledb.4.0;data source=" & App.Path & "\empdb.mdb"
+End Sub
+
+Public Sub opentable()
+recset.Open "select * from empregistration", dbconn, adOpenDynamic, adLockOptimistic
+End Sub
+
+
+
+Public dbconn As New ADODB.Connection
+Public recset As New ADODB.Recordset
+Public photostring As String
+
+Public Sub dbconnection()
+dbconn.Open "provider=microsoft.jet.oledb.4.0;data source=" & App.Path & "\empdb.mdb"
+recset.Open "select * from emptable", dbconn, adOpenDynamic, adLockOptimistic
+End Sub
+
+Public Sub dbconnection2()
+dbconn.Open "dsn=empdata;userid=admin;PASSWORD="
+recset.Open "select * from emptable", dbconn, adOpenDynamic, adLockOptimistic
+End Sub
+
+
+
+
+
+
+
+
+
+
+
+
+'dbconn .ConnectionString = "Driver=(Mysql odbc 3.51 Driver); Server=localhost;port=3306; database=dheeraj; user=root; password=123; option3;"
+
+
+'Method 1------------
+'dbconn.ConnectionString = "Driver=(Mysql odbc 3.51 Driver); Server=localhost;data source=MYSQLSample2; database=dheeraj; user=root; password=123; option3;"
+'cn.Open
+
+'Method 2------------
+'dbconn.Open "dsn=MYSQLSAMPLE2;userid=root;PASSWORD=123"
+'recset.Open "select * from ex1", dbconn, adOpenDynamic, adLockOptimistic
+
+'Method 3------------
+'dbconn.Open "Driver={MySQL ODBC 3.51 Driver};Server=localhost;port=3306;Database=dheeraj;user=root;Password=123;option=3;"
+'recset.Open "select * from ex1", dbconn, adOpenDynamic, adLockOptimistic
+
+'Method 4------------
+'dbconn.Open "provider=MSDASQL;driver={Mysql odbc 3.51 Driver};database=dheeraj;server=localhost;user=root;password=123"
+'recset.Open "select * from ex1", dbconn, adOpenDynamic, adLockOptimistic
+

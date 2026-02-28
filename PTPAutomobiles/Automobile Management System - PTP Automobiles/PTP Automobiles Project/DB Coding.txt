@@ -1,0 +1,149 @@
+create database PTPAutomobiles;
+
+use PTPAutomobiles;
+
+
+//OrderToManufacturer Table:----
+create table OrderToManufacturer(Order_Id int,Order_Name varchar(15),Part_Name varchar(30),Order_Date date,Vehicle_Company varchar(30),Vehicle_Name varchar(30),Vehicle_Model_No varchar(20),Quantity int(5),Payment_Mode varchar(15),Order_Given_By varchar(25),Total_Amount double,Discount int(3),Net_Amount double);
+
+//OrderFromCustomer Table----------
+create table OrderFromCustomer(Order_Id int,Order_Date date,Vehicle_Company varchar(30),Vehicle_Name varchar(30),Vehicle_Model_No varchar(20),Customer_Id int,Customer_Name varchar(25),Customer_Contact varchar(14),Customer_Address varchar(50),Payment_Mode varchar(15),Order_Taken_By varchar(25),Total_Amount double,Discount int(3),Net_Amount double);
+
+//Servicing Table----------
+create table Servicing(Service_Id int,Service_Number varchar(11),Service_Date date,Vehicle_Name varchar(30),Vehicle_Model_No varchar(20),Customer_Id int,Customer_Name varchar(25),Customer_Contact varchar(14),Customer_Address varchar(50),Payment_Mode varchar(15),Service_Given_By varchar(25),Total_Amount double,Discount int(3),Net_Amount double);
+
+//SpareParts Table----------
+create table SpareParts(Service_Number varchar(11),Parts_Name varchar(50),Date date,Vehicle_Name varchar(30),Vehicle_Model_No varchar(20),Customer_Id int,Customer_Name varchar(25),Customer_Contact varchar(14),Customer_Address varchar(50),Payment_Mode varchar(15),Service_Given_By varchar(25),Total_Amount double,Discount int(3),Net_Amount double);
+
+//Employee Table----------
+create table Employee(Name varchar(25),Address varchar(50),MobileNo varchar(14),Email varchar(35),DOB date,DOJ date,Username varchar(15),Password varchar(15));
+
+//Primary Key--------
+alter table OrderToManufacturer add primary key(Order_Id);
+alter table OrderFromCustomer add primary key(Order_Id);
+alter table Servicing add primary key(Service_Id);
+
+//NotNull key
+alter table Servicing modify Service_Number varchar(11) NOT NULL;
+alter table SpareParts modify Service_Number varchar(11) NOT NULL;
+
+
+//All Tables----------
+mysql> show tables;
++--------------------------+
+| Tables_in_ptpautomobiles |
++--------------------------+
+| employee                 |
+| orderfromcustomer        |
+| ordertomanufacturer      |
+| servicing                |
+| spareparts               |
++--------------------------+
+5 rows in set (0.12 sec)
+
+
+
+//Tables Descriptions----------
+
+mysql> desc OrderToManufacturer;
++------------------+-------------+------+-----+---------+-------+
+| Field            | Type        | Null | Key | Default | Extra |
++------------------+-------------+------+-----+---------+-------+
+| Order_Id         | int(11)     | YES  |     | NULL    |       |
+| Order_Name       | varchar(15) | YES  |     | NULL    |       |
+| Part_Name        | varchar(30) | YES  |     | NULL    |       |
+| Order_Date       | date        | YES  |     | NULL    |       |
+| Vehicle_Company  | varchar(30) | YES  |     | NULL    |       |
+| Vehicle_Name     | varchar(30) | YES  |     | NULL    |       |
+| Vehicle_Model_No | varchar(20) | YES  |     | NULL    |       |
+| Quantity         | int(5)      | YES  |     | NULL    |       |
+| Payment_Mode     | varchar(15) | YES  |     | NULL    |       |
+| Order_Given_By   | varchar(25) | YES  |     | NULL    |       |
+| Total_Amount     | double      | YES  |     | NULL    |       |
+| Discount         | int(3)      | YES  |     | NULL    |       |
+| Net_Amount       | double      | YES  |     | NULL    |       |
++------------------+-------------+------+-----+---------+-------+
+13 rows in set (0.01 sec)
+
+
+
+mysql> desc OrderFromCustomer;
++------------------+-------------+------+-----+---------+-------+
+| Field            | Type        | Null | Key | Default | Extra |
++------------------+-------------+------+-----+---------+-------+
+| Order_Id         | int(11)     | YES  |     | NULL    |       |
+| Order_Date       | date        | YES  |     | NULL    |       |
+| Vehicle_Company  | varchar(30) | YES  |     | NULL    |       |
+| Vehicle_Name     | varchar(30) | YES  |     | NULL    |       |
+| Vehicle_Model_No | varchar(20) | YES  |     | NULL    |       |
+| Customer_Id      | int(11)     | YES  |     | NULL    |       |
+| Customer_Name    | varchar(25) | YES  |     | NULL    |       |
+| Customer_Contact | varchar(14) | YES  |     | NULL    |       |
+| Customer_Address | varchar(50) | YES  |     | NULL    |       |
+| Payment_Mode     | varchar(15) | YES  |     | NULL    |       |
+| Order_Taken_By   | varchar(25) | YES  |     | NULL    |       |
+| Total_Amount     | double      | YES  |     | NULL    |       |
+| Discount         | int(3)      | YES  |     | NULL    |       |
+| Net_Amount       | double      | YES  |     | NULL    |       |
++------------------+-------------+------+-----+---------+-------+
+14 rows in set (0.01 sec)
+
+
+mysql> desc servicing;
++------------------+-------------+------+-----+---------+-------+
+| Field            | Type        | Null | Key | Default | Extra |
++------------------+-------------+------+-----+---------+-------+
+| Service_Id       | int(11)     | NO   | PRI | 0       |       |
+| Service_Number   | varchar(11) | NO   |     | NULL    |       |
+| Service_Date     | date        | YES  |     | NULL    |       |
+| Vehicle_Name     | varchar(30) | YES  |     | NULL    |       |
+| Vehicle_Model_No | varchar(20) | YES  |     | NULL    |       |
+| Customer_Id      | int(11)     | YES  |     | NULL    |       |
+| Customer_Name    | varchar(25) | YES  |     | NULL    |       |
+| Customer_Contact | varchar(14) | YES  |     | NULL    |       |
+| Customer_Address | varchar(50) | YES  |     | NULL    |       |
+| Payment_Mode     | varchar(15) | YES  |     | NULL    |       |
+| Service_Given_By | varchar(25) | YES  |     | NULL    |       |
+| Total_Amount     | double      | YES  |     | NULL    |       |
+| Discount         | int(3)      | YES  |     | NULL    |       |
+| Net_Amount       | double      | YES  |     | NULL    |       |
++------------------+-------------+------+-----+---------+-------+
+14 rows in set (0.08 sec)
+
+
+mysql> desc spareparts;
++------------------+-------------+------+-----+---------+-------+
+| Field            | Type        | Null | Key | Default | Extra |
++------------------+-------------+------+-----+---------+-------+
+| Service_Number   | varchar(11) | NO   |     | NULL    |       |
+| Parts_Name       | varchar(50) | YES  |     | NULL    |       |
+| Date             | date        | YES  |     | NULL    |       |
+| Vehicle_Name     | varchar(30) | YES  |     | NULL    |       |
+| Vehicle_Model_No | varchar(20) | YES  |     | NULL    |       |
+| Customer_Id      | int(11)     | YES  |     | NULL    |       |
+| Customer_Name    | varchar(25) | YES  |     | NULL    |       |
+| Customer_Contact | varchar(14) | YES  |     | NULL    |       |
+| Customer_Address | varchar(50) | YES  |     | NULL    |       |
+| Payment_Mode     | varchar(15) | YES  |     | NULL    |       |
+| Service_Given_By | varchar(25) | YES  |     | NULL    |       |
+| Total_Amount     | double      | YES  |     | NULL    |       |
+| Discount         | int(3)      | YES  |     | NULL    |       |
+| Net_Amount       | double      | YES  |     | NULL    |       |
++------------------+-------------+------+-----+---------+-------+
+14 rows in set (0.01 sec)
+
+
+mysql> desc Employee;
++----------+-------------+------+-----+---------+-------+
+| Field    | Type        | Null | Key | Default | Extra |
++----------+-------------+------+-----+---------+-------+
+| Name     | varchar(25) | YES  |     | NULL    |       |
+| Address  | varchar(50) | YES  |     | NULL    |       |
+| MobileNo | varchar(14) | YES  |     | NULL    |       |
+| Email    | varchar(35) | YES  |     | NULL    |       |
+| DOB      | date        | YES  |     | NULL    |       |
+| DOJ      | date        | YES  |     | NULL    |       |
+| Username | varchar(15) | YES  |     | NULL    |       |
+| Password | varchar(15) | YES  |     | NULL    |       |
++----------+-------------+------+-----+---------+-------+
+8 rows in set (0.01 sec)
