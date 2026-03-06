@@ -1,0 +1,41 @@
++create ER - Diagram
++build database and populate it with sample data
+
+DB Name:- BloodBankDB
+
++BloodBankDB:-
+
+-Donor
+	Donor_ID, Name, Date_Of_Birth, Gender, Address
+
+-Blood_Bank_Manager
+	Manager_ID, Name, Phone_Number
+
+-Blood_Unit
+	Blood_Code (unique), Blood_Amount, Donate_Date, Blood_Type,	 +Doner_ID(NOT NULL)
+
+-Hospital
+	Hospital_ID, Name, Address, Email	+Blood_Bank_ID(NOT NULL - not Unique)
+
+-Blood_Bank
+	Blood_Bank_ID, Address,	+Manager_ID(unique)
+
++Donor_Blood_Bank 
+	Donor_ID, Blood_Bank_ID		<- both FK of different tables
+
+> A blood bank manager is assigned to each blood bank. A manager can only be assigned to one blood bank. (Unique)
+> Hospitals always use blood from one assigned blood bank (Unique), and a blood bank can provide blood to several hospitals.
+	Hospitals <-----one to one----> BloodBank (Unique)
+	BloodBank -----one to many ----> Hospitals
+> A donor can donate blood in several blood banks, and at least one donor donates blood to a blood bank (Means - if Donor has name in database then he/she must have to donate in a BloodBank).
+
+	Donor -----one to many----> BloodBank
+
+
+CREATE TABLE Donor_Blood_Bank (
+    Donor_ID INT,
+    Blood_Bank_ID INT,
+    PRIMARY KEY (Donor_ID, Blood_Bank_ID),
+    FOREIGN KEY (Donor_ID) REFERENCES Donor(Donor_ID),
+    FOREIGN KEY (Blood_Bank_ID) REFERENCES Blood_Bank(Blood_Bank_ID)
+);
