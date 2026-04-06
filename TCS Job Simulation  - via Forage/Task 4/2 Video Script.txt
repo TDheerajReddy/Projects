@@ -1,0 +1,53 @@
+So Thank you for giving me this opportunity.
+
+So Lets tell me the process firt, how I clean and process the data:
+At First, I copy the table and make it Duplicate Excel Sheet. And put Original data as backup.
+Then, on the copied Excel sheet, I performed some Data Cleaning Steps LIKE:
+*Removing NULL & Blank Rows of Description & CustomerID columns.
+*Filter the data Like:
+*quantity should not be below 1 unit AND Unit price should not be below $0
+And I also add column "Revenue" to Create Visualisation Better in Power BI.
+
+
+Then after the Transformation or Cleaning the data
+Load the data on Power BI for the Visualisation.
+
+Now, lets go to the Questions.
+Q1. First Question is from CEO sir.
+To Generate the visualization of year 2011's Revenue. 
+for that I choose Line Chart. And included  InvoiceDate's Month and Revenue column.
+So, you can see that the data shows the zig zag dip and then increases. But you can observe that, from July it increases the Revenue. And from November it again dip. It means from July to November our sales are Good.
+
+Q2. Next Question is from CMO sir.
+To generate visualisation of Highest Revenue of Top 10 Countries.
+for that I choose Clustered Column Chart. And included Country column (Sorted as top 10 Countries by Revenue) on X axis and Exclude "United Kingdom" country.
+And on Y axis I include Quantity & Revenue Column.
+So, here you can see the Countries as sorted order. First is Netherlands then EIRE and 3rd is Germany. And in the 10th place is Norway.
+
+Q3. Okay, now lets go to the other question.
+the next question is also from CMO sir.
+To generate visualisation of Top 10 Customers By Revenue.
+I choose Column Chart and Include CustomerID on X axis and filter it as (Top 10 by Revenue).
+and on Y Axis we include Sum of Revenue Column.
+So here you can see the CustomerIDs by Revenue in Descending Order.
+
+
+Q4. Now lets go to the last question
+So the CEO asks for the visualisation of our product demand on countries and their regions.
+So i choose Map cahrt in Power BI.
+And included Country on X axis and Sum of Quantity on "Bubble Size" field. And also I exclude "United Kingdom" country as per CEO request.
+So here you can see the world map, Where we can see here some countries and regions with the highest demand for our products.
+The buble size represents the quatity.
+
+So this is it guys/sirs.
+
+And in the end, I analyze and observe that, if we want to grow more, then we target the Indian and Chinese Customers also, Because of their marketplace.
+
+THANK YOU.
+
+
+
+
+
+
+Target India & China's market. Because of their poulations and its a good marketplace.
